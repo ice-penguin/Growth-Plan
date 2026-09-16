@@ -8,6 +8,7 @@ const User = require('../tool/dbutil')(require('../api/user/user.model'));
 const Token = require('../tool/dbutil')(require('../api/token/token.model'));
 
 const util = require('../tool/util');
+const logger = require('../tool/logger');
 const resUtil = require('../tool/resutil');
 const environmentConfig = require('../config/environment');
 
@@ -133,7 +134,7 @@ exports.hasRole = function(role) {
 						authScheme: req.authScheme,
 						user: item
 					};
-					console.log(`[请求人信息]\n请求ID：${req.headers.requestId}\n信息：${JSON.stringify({ role: req.user.role, name: req.user.name, tel: req.user.tel, _id: req.user._id, scheme: req.authScheme })}`);
+					console.log('[请求人信息] ' + JSON.stringify({ role: req.user.role, name: req.user.name, tel: req.user.tel, _id: req.user._id, scheme: req.authScheme }));
 					next();
 				} else {
 					return res.sendJson(200, resUtil.code409('暂无权限'));
@@ -198,17 +199,19 @@ exports.createSessionToken = async function(opts) {
 	return tokenObj;
 };
 
-// 初始化路由
+// 初始化路由：生成 requestId，后续 console 自动带上
 exports.initRequest = function() {
 	return compose()
 	.use(function(req, res, next) {
 		const requestId = util.uuid();
 		req.headers.requestId = requestId;
-		res.sendJson = (status, obj) => {
-			console.log(`[请求响应]\n请求ID：${requestId}\n响应状态：${status}\n响应体：${JSON.stringify(obj).slice(0, 1000)}`);
-			res.status(status).json(obj);
-		};
-		console.log(`[请求信息]\n请求ID：${requestId}\n请求方法：${req.method}\n请求地址：${req.originalUrl}\nheaders：${JSON.stringify(req.headers)}\nquery：${JSON.stringify(req.query).slice(0, 1000)}\nbody：${JSON.stringify(req.body).slice(0, 1000)}`);
-		next();
+		logger.runWithRequestId(requestId, function () {
+			res.sendJson = (status, obj) => {
+				console.log('[请求响应] 状态：' + status + ' 响应体：' + JSON.stringify(obj).slice(0, 1000));
+				res.status(status).json(obj);
+			};
+			console.log('[请求信息] ' + req.method + ' ' + req.originalUrl + '\nheaders：' + JSON.stringify(req.headers) + '\nquery：' + JSON.stringify(req.query).slice(0, 1000) + '\nbody：' + JSON.stringify(req.body).slice(0, 1000));
+			next();
+		});
 	});
 };

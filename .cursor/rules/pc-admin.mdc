@@ -29,4 +29,3 @@ alwaysApply: false
 ## 不要
 
 - 不要引入 Vue 3 / TypeScript / Vite
-- 计划/目标/打卡等未做能力：先读 `docs/ui/页面清单.md` 和 `docs/product/功能清单.md`

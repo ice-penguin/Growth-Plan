@@ -6,6 +6,8 @@
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'local';
 
+require('./tool/logger');
+
 process.on('unhandledRejection', function (reason, promise) {
 	console.error('Unhandled Rejection at:', promise);
 	console.error('Reason:', reason);

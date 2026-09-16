@@ -26,4 +26,3 @@ uni-app，先出微信。登录范例：`pages/user/login.vue`。接口范例：
 
 - 不要上 Vue 3 Composition API 作为默认写法（与现有 Options 风格保持一致）
 - 不要把 PC 管理端页面或 Ant Design 组件搬进小程序
-- 计划/目标/打卡等未做能力：先读 `docs/ui/页面清单.md` 和 `docs/product/功能清单.md`

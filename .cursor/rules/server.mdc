@@ -24,8 +24,8 @@ alwaysApply: false
 - 软删：`isDelete`，不要物理删
 - 定时任务只放 `server/api/z_schedule/timer/`，由 `app_schedule.js` 跑，不要挂到主 API
 - 环境：库/端口 `config/environment/`；OSS/微信等 `tool/config.js` 切换 `tool/config/*.config.js`
+- 日志：`tool/logger.js` 替换 console；`initRequest` 写入 requestId 后，本次请求内的 `console.log/warn/error` 都会带上
 
 ## 不要
 
 - 不要服务端渲染页面；模版文件放 `templates/`
-- 计划/目标/打卡等未做能力：先读 `docs/product/功能清单.md` 和 `docs/tech/数据模型.md`

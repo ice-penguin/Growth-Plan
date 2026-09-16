@@ -8,26 +8,28 @@ alwaysApply: true
 完整说明见根目录 `AGENTS.md`。回答或改代码前：匹配能力表 → 只读该行文件 → 不要全仓扫描。
 
 单仓：`docs/` 设计、`server/` 后端、`pc-admin/` Vue2 管理端、`mobile-user/` 微信小程序。  
-业务（计划/目标/打卡/复盘/统计）未做；登录与用户/角色/权限/菜单已做。
+已做：登录、用户/角色/权限/菜单、上传、定时器、日志。
 
 ## 协议
 
 1. 用用户原话匹配能力表关键词
 2. 只读「先读」，最多再读 1～2 个「再读」
-3. 未做：先读产品文档再新增；已做：先打开现有代码再改
-4. 改了入口或新做成了能力：同步本表和 `AGENTS.md`
+3. 已做：以代码为准再改，不要回写 `docs/`。表里没有 / 未实现：先读 `docs/README.md`，不要假装已有接口
+4. 改了入口或新做成了能力：同步本表和 `AGENTS.md`（先读改为代码）。未规划的模块不要写进能力表
 
 ## 能力表
 
 | 关键词 | 状态 | 先读 | 再读 |
 | --- | --- | --- | --- |
-| 登录 JWT 微信 token | 已做 | `docs/api/接口约定.md` | `server/auth/`；PC `views/user/Login.vue`；小程序 `pages/user/login.vue` |
+| 登录 JWT 微信 token | 已做 | `server/auth/` | PC `views/user/Login.vue`；小程序 `pages/user/login.vue` |
 | 用户 账号 员工 | 已做 | `server/api/user/` | PC `views/setting/staff/account/index.vue` |
 | 角色 权限 菜单 | 已做 | `server/api/{role,auth,nav}/` | `server/config/init.js`；PC `views/admin/menu/` |
 | 上传 OSS | 已做 | `server/api/upload/`、`aliyun/` | `server/tool/config/*.config.js` |
 | 定时器 | 已做 | `server/app_schedule.js` | `server/api/z_schedule/` |
-| 计划 目标 打卡 复盘 统计 | 未做 | `docs/product/功能清单.md` | `docs/tech/数据模型.md`、`docs/ui/页面清单.md` |
+| 日志 requestId console | 已做 | `server/tool/logger.js` | `initRequest` |
+| 配置 config | 占位 | `server/api/config/` | `pc-admin/src/api/modules/config.js` |
 | 怎么跑 环境 端口 | 已做 | 根 `README.md` | 各包 README |
+| 产品范围 还没做 设计 | 未做 | `docs/README.md` | `docs/product/`、`docs/tech/`、`docs/ui/` |
 | 加后端模块 | 约定 | `.cursor/rules/server.mdc` | `server/api/user/` |
 | 加 PC 页面 | 约定 | `.cursor/rules/pc-admin.mdc` | `generator-routers.js` |
 | 加小程序页 | 约定 | `.cursor/rules/mobile-user.mdc` | `pages.json`、`common/api.js` |
@@ -39,3 +41,4 @@ alwaysApply: true
 - PC Bearer + `admin|organization|staff`；小程序 `Wechat` + `wechat`
 - 新 PC 页的路由 key = 后端菜单 `component`
 - 不要把 Schema / 接口字段写进本文件
+- 已实现的以代码为准，不要回写 `docs/`

@@ -15,7 +15,10 @@ module.exports = function (app) {
 	app.use(bodyParser.json());
 	app.use(methodOverride());
 	app.use(cookieParser());
-	app.use(morgan('dev'));
+	morgan.token('request-id', function (req) {
+		return req.headers.requestId || '-';
+	});
+	app.use(morgan('[:request-id] :method :url :status :response-time ms'));
 
 	if (env === 'development' || env === 'test') {
 		app.use(errorHandler());
