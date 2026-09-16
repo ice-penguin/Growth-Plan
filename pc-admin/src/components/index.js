@@ -33,11 +33,8 @@ import WangEditor from '@/components/Editor/WangEditor'
 import QuillEditor from '@/components/Editor/QuillEditor'
 import Dialog from '@/components/Dialog'
 import RowCascader from '@/components/Cascader/RowCascader'
-import ScanCode from '@/components/ScanCode'
 import Empty from '@/components/Empty'
-import NewFace from '@/components/NewFace'
 import PopconfirmBtn from '@/components/PopconfirmBtn'
-import FieldStatus from '@/components/FieldStatus'
 import WeekTab from '@/components/WeekTab'
 import CheckboxGroup from '@/components/CheckboxGroup'
 
@@ -69,11 +66,8 @@ export {
   QuillEditor,
   Dialog,
   RowCascader,
-  ScanCode,
-  NewFace,
   PopconfirmBtn,
   Empty,
-  FieldStatus,
   WeekTab,
   CheckboxGroup
 }

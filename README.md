@@ -19,4 +19,5 @@ mobile-user/   用户端小程序（微信）
 | [pc-admin](./pc-admin/README.md) | 管理后台，默认 http://localhost:8100 |
 | [mobile-user](./mobile-user/README.md) | 用 HBuilderX 跑到微信开发者工具 |
 
-设计文档入口：[docs/](./docs/README.md)。
+设计文档入口：[docs/](./docs/README.md)。  
+Agent 索引：[AGENTS.md](./AGENTS.md)。

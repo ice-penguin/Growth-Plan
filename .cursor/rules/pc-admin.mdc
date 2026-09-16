@@ -1,0 +1,32 @@
+---
+description: Growth-Plan PC 管理端写法。新增页面、接口、菜单时使用。
+globs: pc-admin/**
+alwaysApply: false
+---
+
+# pc-admin 写法
+
+栈：Vue 2.6 + Vue Router 3 + Vuex 3 + Ant Design Vue 1.x + Less，Options API。`@` → `src/`。
+
+列表页范例：`src/views/setting/staff/account/index.vue`。
+
+## 新页面
+
+1. `src/api/modules/<域>.js` 用 `createPostRequest` 声明接口，并在 `src/api/request.js` 导出
+2. 页面放 `src/views/<域>/index.vue`；抽屉/表单放同目录 `modules/*.vue`
+3. 在 `src/router/generator-routers.js` 的 `constantRouterComponents` 注册懒加载组件
+4. 后端菜单 `component` 必须与上一步的 key 完全一致（初始化菜单在 `server/config/init.js`）
+5. 页面 `import { ... } from '@/api/request'`，不要在页面里写 URL
+
+## 列表与风格
+
+- `STable` + `loadData` + `setTableData(pageNo, pageSize, res.data, 'result')`
+- `rowKey="_id"`；刷新 `this.$refs.table.refresh(true)`
+- 模板顺序：`<template>` → `<script>` → `<style scoped lang="less">`
+- Prettier：无分号、单引号
+- 接口地址只来自 `.env.*` 的 `VUE_APP_API_BASE_URL`
+
+## 不要
+
+- 不要引入 Vue 3 / TypeScript / Vite
+- 计划/目标/打卡等未做能力：先读 `docs/ui/页面清单.md` 和 `docs/product/功能清单.md`

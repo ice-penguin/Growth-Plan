@@ -118,26 +118,7 @@ const vueConfig = {
   },
 
   devServer: {
-    // development server port 8100（避免与 firefly-client 冲突）
     port: 8100
-    // host: 'localhost',
-    // open: true,
-    // proxy: {
-    //   '/': {
-    //     target: 'https://dev.hulasports.com',
-    //     changeOrigin: true
-    //   },
-    //   '/api': {
-    //     target: 'https://dev.hulasports.com',
-    //     changeOrigin: true
-    //   },
-    //   '/auth': {
-    //     target: 'https://dev.hulasports.com',
-    //     changeOrigin: true
-    //   }
-    // }
-    // If you want to turn on the proxy, please remove the mockjs /src/main.jsL11
-    // proxy: 'https://dev.hulasports.com'
   },
 
   // disable source map in production
@@ -147,7 +128,6 @@ const vueConfig = {
   transpileDependencies: []
 }
 
-// preview.pro.loacg.com only do not use in your production;
 if (process.env.VUE_APP_PREVIEW === 'true') {
   console.log('VUE_APP_PREVIEW', true)
   // add `ThemeColorReplacer` plugin to webpack plugins

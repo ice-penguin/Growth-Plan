@@ -10,7 +10,7 @@ const http = function (options) {
       data: options.data,
       header: {
         'Content-Type': 'application/json',
-        // 小程序鉴权：Authorization: Wechat <token>（对齐华润 mobile-front-client）
+        // 小程序鉴权：Authorization: Wechat <token>
         Authorization: token ? ('Wechat ' + token) : ''
       },
       success: function (res) {

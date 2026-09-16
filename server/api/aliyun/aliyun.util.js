@@ -31,7 +31,7 @@ function createClient(ossConf) {
 }
 
 /**
- * 上传到阿里云 OSS（对齐 field-pc：uploadOss(name, url)）
+ * 上传到阿里云 OSS
  * @param {String} name OSS 对象名，可带目录前缀
  * @param {String|Buffer} url 本地文件路径或 Buffer
  * @returns {Promise<{code: string, url?: string, msg?: any}>}
@@ -94,7 +94,7 @@ exports.deleteOss = function (name) {
 };
 
 /**
- * 清理 multipart 临时目录（对齐场馆上传后清 cached）
+ * 清理 multipart 临时目录
  */
 exports.clearCachedFile = function (filePath) {
 	try {

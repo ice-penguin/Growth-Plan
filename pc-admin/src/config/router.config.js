@@ -16,26 +16,6 @@ export const asyncRouterMap = [
         meta: { title: 'admin管理端', icon: 'control' },
         children: [
           {
-            path: '/admin/organization',
-            name: 'adminOrganization',
-            component: RouteView,
-            meta: { title: '机构管理', keepAlive: false },
-            children: [
-              {
-                path: '/admin/organization/all-org',
-                name: 'AllOrg',
-                component: () => import('@/views/admin/organization/allOrg'),
-                meta: { title: '全部机构' }
-              },
-              {
-                path: '/admin/organization/menu-setting',
-                name: 'MenuSetting',
-                component: () => import('@/views/admin/organization/menuSetting/index'),
-                meta: { title: '菜单设置' }
-              }
-            ]
-          },
-          {
             path: '/admin/menu',
             name: 'menu',
             component: RouteView,

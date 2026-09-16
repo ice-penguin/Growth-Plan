@@ -1,0 +1,31 @@
+---
+description: Growth-Plan 后端写法。新增 API、模型、定时任务时使用。
+globs: server/**
+alwaysApply: false
+---
+
+# server 写法
+
+对照现有模块 `server/api/user/`，不要平铺到 `api/` 根目录。
+
+## 新业务模块
+
+1. 建 `server/api/<name>/`：`index.js` 路由、`<name>.controller.js` 逻辑、`<name>.model.js` 模型
+2. 在 `server/routes.js` 挂载：`app.use('/api/<name>', initRequest(), require('./api/<name>'))`
+3. 模型用 mongoose；查询走 `require('../../tool/dbutil')(Model)`
+4. 成功/失败用 `tool/resutil`、`tool/errorutil`；业务错误抛 `{ status: 200, data: resUtil.code409('...') }`
+5. 需要登录的路由：`auth.hasRole(['admin', 'organization', 'staff'])`；小程序加 `'wechat'`
+6. 管理端要出现菜单时，改 `server/config/init.js` 的 `MENUS`（`component` 名必须和 PC 路由 key 一致）
+
+## 约定
+
+- 登录不在 `/api`：PC `POST /auth/login`，小程序 `POST /auth/wx/login`（`server/auth/`）
+- 列表分页 body：`page`、`itemsPerPage`（见 `user.controller.js` 的 `index`）
+- 软删：`isDelete`，不要物理删
+- 定时任务只放 `server/api/z_schedule/timer/`，由 `app_schedule.js` 跑，不要挂到主 API
+- 环境：库/端口 `config/environment/`；OSS/微信等 `tool/config.js` 切换 `tool/config/*.config.js`
+
+## 不要
+
+- 不要服务端渲染页面；模版文件放 `templates/`
+- 计划/目标/打卡等未做能力：先读 `docs/product/功能清单.md` 和 `docs/tech/数据模型.md`

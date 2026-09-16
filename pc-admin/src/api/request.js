@@ -4,9 +4,7 @@
  */
 export * from './modules/auth'
 export * from './modules/aliyun'
-export * from './modules/attendance'
 export * from './modules/config'
 export * from './modules/nav'
-export * from './modules/otdaily'
 export * from './modules/role'
 export * from './modules/user'

@@ -24,7 +24,7 @@ exports.upload = {
 	maxSizeMb: 20 // 单文件大小上限，单位 MB
 };
 
-// ---------- 阿里云 OSS 普通上传（对齐 field ossNormal） ----------
+// ---------- 阿里云 OSS 普通上传 ----------
 exports.ossNormal = {
 	ali_AccessKeyId: '', // 阿里云 AccessKeyId
 	ali_AccessKeySecret: '', // 阿里云 AccessKeySecret

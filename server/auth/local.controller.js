@@ -51,7 +51,6 @@ exports.login = async function(req, res) {
 
 /**
  * 小程序登录：code → openid → 查/建用户 → Wechat token
- * 对齐 field managerCodeGetToken + 华润 Authorization: Wechat <token>
  * POST /auth/wx/login { code }
  */
 exports.wxLogin = async function(req, res) {

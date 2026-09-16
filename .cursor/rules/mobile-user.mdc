@@ -1,0 +1,29 @@
+---
+description: Growth-Plan 用户端小程序写法。新增页面、登录或请求时使用。
+globs: mobile-user/**
+alwaysApply: false
+---
+
+# mobile-user 写法
+
+uni-app，先出微信。登录范例：`pages/user/login.vue`。接口范例：`common/api.js`。
+
+## 新页面
+
+1. 在 `pages/<域>/` 建 `index.vue`
+2. 必须写入 `pages.json`（不写则无法打开）
+3. 接口函数放 `common/api.js`，走 `common/http.js`，不要在页面里拼 `baseUrl`
+4. 用户态用 `store` 的 `$token`、`$userInfo`（已持久化）；改用 `updateState`
+
+## 请求与鉴权
+
+- Header：`Authorization: Wechat <token>`，不要抄 PC 的 Bearer
+- 默认 POST；成功判断 `res.code === 200`
+- 环境在 `common/config.js` 切换 `common/config/*.config.js`（默认 local）
+- 后端微信 AppId/Secret 在 `server/tool/config/*.config.js` 的 `wechatMini`，须与 `manifest.json` 一致
+
+## 不要
+
+- 不要上 Vue 3 Composition API 作为默认写法（与现有 Options 风格保持一致）
+- 不要把 PC 管理端页面或 Ant Design 组件搬进小程序
+- 计划/目标/打卡等未做能力：先读 `docs/ui/页面清单.md` 和 `docs/product/功能清单.md`

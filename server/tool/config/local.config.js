@@ -1,7 +1,6 @@
 /**
  * 本地环境对接配置
  * 切换环境：改 tool/config.js 顶部 require
- * 字段风格对齐 field-pc/server/tool/config
  */
 
 // 环境标识，用于区分当前配置名
@@ -25,7 +24,7 @@ exports.upload = {
 	maxSizeMb: 10 // 单文件大小上限，单位 MB
 };
 
-// ---------- 阿里云 OSS 普通上传（对齐 field ossNormal） ----------
+// ---------- 阿里云 OSS 普通上传 ----------
 exports.ossNormal = {
 	ali_AccessKeyId: '', // 阿里云 AccessKeyId
 	ali_AccessKeySecret: '', // 阿里云 AccessKeySecret

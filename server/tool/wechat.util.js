@@ -6,7 +6,6 @@ const resUtil = require('../tool/resutil');
 
 /**
  * 微信小程序 jscode2session
- * 对齐 field api/wxticket/wxticket.util.js auth_code2Session
  * @param {String} code uni.login 拿到的 js_code
  * @returns {Promise<{ openid: String, session_key: String, unionid?: String }>}
  */

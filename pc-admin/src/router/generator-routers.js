@@ -23,7 +23,6 @@ const constantRouterComponents = {
   UserLayout: UserLayout,
   login: () => import(/* webpackChunkName: "user" */ '@/views/user/Login'),
 
-  adminOrganization: RouteView,
   Menu: RouteView,
   Settings: () => import('@/views/admin/menu/settings'),
   Define: () => import('@/views/admin/menu/define'),
