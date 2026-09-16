@@ -1,0 +1,15 @@
+{
+  "name": "成长计划",
+  "appid": "",
+  "description": "成长计划微信小程序",
+  "versionName": "0.0.1",
+  "versionCode": "100",
+  "transformPx": false,
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": false
+    },
+    "usingComponents": true
+  }
+}

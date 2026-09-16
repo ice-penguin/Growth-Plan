@@ -1,0 +1,20 @@
+---
+description: ot-expense-client 编码规范
+globs:
+alwaysApply: true
+---
+
+# ot-expense-client 编码规范
+
+完整文档见项目根目录 `AGENTS.md`。编写代码时必须遵循：
+
+- **栈**：Vue 2.6 + Vue Router 3 + Vuex 3 + Ant Design Vue 1.7 + Less，Options API
+- **路径别名**：`@` → `src/`
+- **API**：全部在 `src/api/request.js` / `modules/` 用 `createPostRequest` 定义；页面 `import from '@/api/request'`；对接 ot-expense-server（POST、body.code、Bearer Token）
+- **列表页**：`STable` + `loadData` + `setTableData(page, pageSize, res.data, 'result')`；`rowKey="_id"`；刷新 `this.$refs.table.refresh(true)`
+- **页面位置**：`src/views/{域}/index.vue`；抽屉/表单子组件 `modules/*.vue`（PascalCase）
+- **新页面路由**：在 `src/router/generator-routers.js` → `constantRouterComponents` 注册懒加载组件
+- **配置**：API 地址 `.env.*` 的 `VUE_APP_API_BASE_URL`；布局/上传 `src/config/defaultSettings.js`；Webpack `vue.config.js`
+- **工具**：通用放 `src/utils/`；组件放 `src/components/` 并从 `index.js` 导出
+- **风格**：Prettier 无分号、单引号；`const`/`let`；`<template>` → `<script>` → `<style scoped lang="less">`
+- **禁止**：Vue 3 / TS / Vite；页面内硬编码 API URL；无关重构

@@ -1,0 +1,6 @@
+{
+  "name": "growth-plan-mobile-user",
+  "version": "0.0.1",
+  "private": true,
+  "description": "成长计划用户端（uni-app 微信小程序）"
+}

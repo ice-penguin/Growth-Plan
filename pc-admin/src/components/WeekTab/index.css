@@ -1,0 +1,6 @@
+.week-tab .ant-calendar {
+  top: 60px;
+}
+.week-tab .ant-calendar-input-wrap {
+  display: none;
+}
